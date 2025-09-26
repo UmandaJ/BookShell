@@ -13,10 +13,7 @@ router.post("/place-order", authenticateToken, async (req, res) => {
     for (const orderData of order) {
       const newOrder = new Order({ user: id, book: orderData._id });
       const orderDataFromDb = await newOrder.save();
-
-      // Save order reference in user model
       await User.findByIdAndUpdate(id, { $push: { orders: orderDataFromDb._id } });
-      // Remove ordered book from cart
       await User.findByIdAndUpdate(id, { $pull: { cart: orderData._id } });
     }
 
@@ -51,17 +48,16 @@ router.get("/get-order-history", authenticateToken, async (req, res) => {
   }
 });
 
-// Get All Orders (seller sees only their own orders)
+// Get All Orders => Seller
 router.get("/get-all-orders", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
     const user = await User.findById(id);
 
     if (user?.role === "seller") {
-      // Populate book and filter where book.sellerId == id
       const rows = await Order.find()
         .populate({ path: "book", select: "-__v -createdAt -updatedAt" })
-        .populate({ path: "user", select: "username email address avatar" }) // ✅ added address
+        .populate({ path: "user", select: "username email address avatar" }) 
         .sort({ createdAt: -1 });
 
       const mine = rows.filter(
@@ -71,10 +67,10 @@ router.get("/get-all-orders", authenticateToken, async (req, res) => {
       return res.json({ status: "Success", data: mine });
     }
 
-    // default: admin or others see all
+    // Admin
     const all = await Order.find()
       .populate({ path: "book" })
-      .populate({ path: "user", select: "username email address avatar" }) // ✅ added address
+      .populate({ path: "user", select: "username email address avatar" }) 
       .sort({ createdAt: -1 });
 
     return res.json({ status: "Success", data: all });
