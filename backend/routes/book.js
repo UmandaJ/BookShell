@@ -65,7 +65,7 @@ router.delete("/delete-book", authenticateToken, async (req, res) => {
   }
 });
 
-// Get My Books (seller only)
+// Get My Books => Book Owner
 router.get("/get-my-books", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
@@ -97,21 +97,17 @@ router.get("/get-all-books", async (req, res) => {
   }
 });
 
-// Search Books by title/author — ALL words must match (AND search)
+// Search Books by title/author 
 router.get("/search-books", async (req, res) => {
   try {
     const q = (req.query.q || "").trim();
     if (!q) {
       return res.status(400).json({ message: "Query parameter 'q' is required" });
     }
-
-    // Split query into words, escape regex specials
     const words = q
       .split(/\s+/)
       .filter(Boolean)
       .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-
-    // Build AND of per-word OR(title, author)
     const andConditions = words.map((w) => ({
       $or: [
         { title: { $regex: w, $options: "i" } },
