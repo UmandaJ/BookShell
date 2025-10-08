@@ -1,11 +1,9 @@
-// frontend/src/pages/AllBooks.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
 import BookCard from "../components/BookCard/BookCard";
 import noSearchImg from "../assets/noSearch.png";
 
-// small debounce to avoid a request on every keystroke
 function useDebouncedValue(value, delay = 400) {
   const [debounced, setDebounced] = useState(value);
   useEffect(() => {
@@ -49,7 +47,6 @@ const AllBooks = () => {
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
   return (
