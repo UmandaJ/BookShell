@@ -1,4 +1,3 @@
-// frontend/src/pages/AllOrders.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
@@ -30,7 +29,6 @@ const AllOrders = () => {
         setOrders([]); // avoid spinner on error
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const openOptions = (rowIndex) => {
