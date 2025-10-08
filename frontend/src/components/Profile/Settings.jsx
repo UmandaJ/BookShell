@@ -31,7 +31,7 @@ const Settings = () => {
         setProfile(userPayload);
         setValue({ address: userPayload.address || "" });
 
-        // Orders (role-aware)
+        // Orders 
         const ordersRes =
           role === "seller"
             ? await axios.get("https://book-shell-backend.vercel.app/api/v1/get-all-orders", { headers })
@@ -58,7 +58,6 @@ const Settings = () => {
     };
 
     fetchAll();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role]);
 
   const submitAddress = async () => {
@@ -125,7 +124,7 @@ const Settings = () => {
               </div>
             </div>
 
-            {/* Stats — compact boxes */}
+            {/* Stats */}
             <div className="mt-6 grid grid-cols-2 gap-3">
               {/* Orders (blue) */}
               <div className="h-20 rounded-lg border border-blue-200 bg-blue-50 p-3 flex flex-col items-center justify-center text-center">
