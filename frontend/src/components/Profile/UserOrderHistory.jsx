@@ -90,7 +90,6 @@ const UserOrderHistory = () => {
                       </Link>
                     </div>
 
-                    {/* left-aligned + nudged slightly left */}
                     <div className="w-[45%] text-gray-600 text-left -ml-1 sm:-ml-2 text-xs sm:text-sm">
                       {(book.desc || "").slice(0, 60)}
                       {(book.desc || "").length > 60 ? "…" : ""}
