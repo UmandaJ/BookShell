@@ -41,7 +41,7 @@ const AddBook = () => {
   };
 
   return (
-    /* Top aligned with sidebar: no top padding/margin */
+    
     <div className="min-h-screen bg-amber-50/60 px-4 md:px-8 py-0">
       <div className="mx-auto w-full max-w-3xl">
         <div className="mt-0 rounded-2xl border border-gray-200 bg-white shadow-sm">
