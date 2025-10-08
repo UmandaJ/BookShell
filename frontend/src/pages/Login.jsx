@@ -31,14 +31,13 @@ const LogIn = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      // Persist + Redux auth state
       localStorage.setItem("id", data.id);
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       dispatch(authActions.login());
       dispatch(authActions.changeRole(data.role));
 
-      navigate("/profile");           // go to Profile on success
+      navigate("/profile");          
     } catch (err) {
       alert(err?.response?.data?.message || "Login failed");
     } finally {
