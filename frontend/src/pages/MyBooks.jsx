@@ -1,4 +1,3 @@
-// frontend/src/pages/MyBooks.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -32,7 +31,6 @@ const MyBooks = () => {
 
   useEffect(() => {
     fetchMine();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteBook = async (bookId) => {
@@ -68,7 +66,7 @@ const MyBooks = () => {
         </div>
       )}
 
-      {/* Grid — same as Favourites (4 per row on lg) */}
+      {/* Grid */}
       {books && books.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {books.map((b) => (
@@ -81,7 +79,7 @@ const MyBooks = () => {
                 to={`/view-book-details/${b._id}`}
                 className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-400 rounded-2xl"
               >
-                {/* Image (same block as BookCard) */}
+                {/* Image */}
                 <div className="overflow-hidden rounded-t-2xl bg-gray-50">
                   <div className="flex h-56 items-center justify-center">
                     <img
@@ -93,7 +91,7 @@ const MyBooks = () => {
                   </div>
                 </div>
 
-                {/* Content (same spacing & typography as BookCard) */}
+                {/* Content */}
                 <div className="space-y-2 rounded-b-2xl p-4">
                   <h2 className="font-semibold text-gray-900 text-lg line-clamp-1">
                     {b.title}
@@ -103,7 +101,7 @@ const MyBooks = () => {
                 </div>
               </Link>
 
-              {/* Footer actions — replaces the favourites button */}
+              {/* Footer actions */}
               <div className="border-t border-gray-100 p-4 flex items-center justify-between gap-3">
                 <Link
                   to={`/updateBook/${b._id}`}
