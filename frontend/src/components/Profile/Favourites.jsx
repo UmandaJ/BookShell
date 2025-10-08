@@ -54,7 +54,7 @@ const Favourites = () => {
           </div>
         )}
 
-        {/* Grid — scales 1→2→3→4 columns */}
+        {/* Grid */}
         {FavouriteBooks && FavouriteBooks.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {(FavouriteBooks || []).map((item) => (
