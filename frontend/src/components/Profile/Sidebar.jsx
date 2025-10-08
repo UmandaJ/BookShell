@@ -24,7 +24,7 @@ const Sidebar = ({ data }) => {
         md:justify-between
       "
     >
-      {/* Mobile: row layout */}
+      {/* Mobile */}
       <div className="flex flex-col sm:flex-col md:flex-col lg:flex-col gap-4 w-full">
         {/* Avatar and info */}
         <div className="flex flex-col md:items-center sm:items-center items-center md:w-full">
