@@ -21,10 +21,9 @@ const Favourites = () => {
       setFavouriteBooks(response.data.data);
     };
     fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Remove a book locally after successful API call from BookCard
+  // Remove a book 
   const handleRemovedFromFav = (bookId) => {
     setFavouriteBooks((prev) => (prev || []).filter((b) => b && b._id !== bookId));
   };
