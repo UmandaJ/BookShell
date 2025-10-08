@@ -68,7 +68,6 @@ const ViewBookDetails = () => {
                 className="h-[45vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] rounded object-cover shadow-sm mx-auto"
               />
 
-              {/* Buyer Buttons (Favourite + Cart) */}
               {isLoggedIn && role === "buyer" && (
                 <div className="flex flex-row lg:flex-col items-center justify-between lg:justify-start mt-6 lg:mt-0 gap-3 lg:gap-6">
                   <button
