@@ -16,14 +16,12 @@ const Cart = () => {
     authorization: `Bearer ${localStorage.getItem("token")}`,
   };
 
-  // Fetch cart once on mount
   useEffect(() => {
     const fetch = async () => {
       const res = await axios.get("https://book-shell-backend.vercel.app/api/v1/get-user-cart", { headers });
       setCart(res.data.data);
     };
     fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const refetchCart = async () => {
@@ -97,8 +95,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
-
-          {/* Layout: Items (left) + Summary (right) */}
+          
           <div className="mx-auto grid w/full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-12">
             {/* Items list */}
             <div className="lg:col-span-8">
@@ -122,7 +119,7 @@ const Cart = () => {
                           : "hover:bg-gray-50"
                       ].join(" ")}
                     >
-                      {/* Left: book info */}
+                    
                       <div className="flex flex-1 items-center gap-4 md:gap-5">
                         <div className="h-[100px] w-[76px] overflow-hidden rounded-lg ring-1 ring-gray-200 bg-gray-50 flex-shrink-0">
                           <img
@@ -152,7 +149,6 @@ const Cart = () => {
                         </div>
                       </div>
 
-                      {/* Right: price + delete */}
                       <div className="w-32 flex flex-col items-end justify-center gap-2">
                         <span className="inline-flex items-center rounded-lg bg-amber-100 px-3 py-1.5 text-lg font-semibold text-gray-900 ring-1 ring-amber-200">
                           Rs.{item.price}
